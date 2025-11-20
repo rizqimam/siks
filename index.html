@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Form Pendataan Perubahan Desil SIKS-NG Desa Sedayu</title>
+
+<style>
+  :root{--card-bg:#fff;--page-bg:#f4f6f9;--accent:#1565c0;--muted:#6b7280;--input-border:#d1d5db;--radius:10px;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:var(--page-bg);color:#0f1724;padding:18px;}
+  .wrap{max-width:1100px;margin:0 auto;background:var(--card-bg);border-radius:var(--radius);box-shadow:0 6px 22px rgba(12,20,35,0.08);padding:22px;}
+  h1{margin:0 0 6px;font-size:20px}
+  p.lead{margin:6px 0 18px;color:var(--muted)}
+  h2{margin:28px 0 8px;font-size:16px;padding-left:10px;border-left:4px solid var(--accent);}
+  label{display:block;font-weight:600;margin-top:10px;font-size:13px}
+  .muted{color:var(--muted);font-weight:500;font-size:13px;margin-top:4px}
+  input[type="text"],input[type="number"],select,textarea{width:100%;padding:10px;border:1px solid var(--input-border);border-radius:8px;margin-top:6px;font-size:14px;background:#fff;}
+  textarea{min-height:80px;resize:vertical}
+  .row{display:flex;gap:12px;flex-wrap:wrap;align-items:end}
+  .col{flex:1;min-width:160px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .small{font-size:13px;color:var(--muted);margin-top:6px}
+  .required{color:#d32f2f;margin-left:6px}
+  .btn{display:block;width:100%;padding:14px;border-radius:10px;background:var(--accent);color:#fff;border:0;font-weight:700;margin-top:24px;cursor:pointer;font-size:16px;}
+  .btn:active{transform:translateY(1px)}
+  .preview-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+  .preview-row img{max-width:140px;border-radius:8px;border:1px solid #e6eefc}
+  .error{border-color:#d32f2f!important;box-shadow:0 0 0 4px rgba(211,47,47,0.06)}
+  .checkbox-group{margin-top:20px;padding:16px;background:#f8f9fc;border-radius:8px;border:1px solid #e2e8f0;}
+  @media (max-width:900px){.grid-3,.grid-2,.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Form Pendataan Perubahan Desil SIKS-NG Desa Sedayu</h1>
+  <p class="lead">Semua field bertanda bintang (*) wajib diisi. Isi 0 bila tidak punya aset/ternak.</p>
+
+  <form id="mainForm" enctype="multipart/form-data" novalidate>
+
+    <!-- 1. DATA KELUARGA -->
+    <h2>1. Data Keluarga</h2>
+
+    <label for="no_kk">Nomor Kartu Keluarga (No KK) <span class="required">*</span></label>
+    <input id="no_kk" name="no_kk" type="text" required maxlength="16">
+
+    <label for="nik_kk">NIK Kepala Keluarga <span class="required">*</span></label>
+    <input id="nik_kk" name="nik_kk" type="text" required maxlength="16">
+
+    <label for="nama_kk">Nama Kepala Keluarga <span class="required">*</span></label>
+    <input id="nama_kk" name="nama_kk" type="text" required>
+
+    <label for="no_wa">Nomor WhatsApp (untuk konfirmasi) <span class="required">*</span></label>
+    <input id="no_wa" name="no_wa" type="text" required placeholder="08xxxxxxxxxx">
+
+    <label for="desa">Desa/Dusun <span class="required">*</span></label>
+    <select id="desa" name="desa" required>
+      <option value="">-- Pilih Desa --</option>
+      <option>SEDAYU</option><option>SILEMPAH</option><option>KARANGANYAR</option>
+      <option>SEMUNGGANG</option><option>MERAPI MULYO</option><option>CENGANG</option>
+      <option>TANJUNGSARI</option><option>JATIALIT</option><option>SIPETUNG</option>
+    </select>
+
+    <div class="row">
+      <div class="col"><label for="rt">RT <span class="required">*</span></label>
+        <select id="rt" name="rt" required><option value="">-- RT --</option></select></div>
+      <div class="col"><label for="rw">RW <span class="required">*</span></label>
+        <select id="rw" name="rw" required><option value="">-- RW --</option></select></div>
+    </div>
+
+    <!-- 2. STATUS BANGUNAN -->
+    <h2>2. Status Kepemilikan & Bangunan</h2>
+    <label for="status_kepemilikan">Status Kepemilikan Bangunan <span class="required">*</span></label>
+    <select id="status_kepemilikan" name="status_kepemilikan" required>
+      <option value="">-- Pilih --</option>
+      <option>Milik sendiri</option><option>Kontrak/sewa</option><option>Bebas sewa</option>
+      <option>Dinas</option><option>Lainnya</option>
+    </select>
+
+    <label for="luas_lantai">Luas lantai bangunan (m²) <span class="required">*</span></label>
+    <input id="luas_lantai" name="luas_lantai" type="number" min="0" required>
+
+    <label for="jenis_lantai">Jenis Lantai Terluas <span class="required">*</span></label>
+    <select id="jenis_lantai" name="jenis_lantai" required>
+      <option value="">-- Pilih --</option>
+      <option>Marmer/granit</option><option>Keramik</option><option>Parket/vinil/karpet</option>
+      <option>Ubin/tegel/teraso</option><option>Kayu/papan</option><option>Semen/bata merah</option>
+      <option>Bambu</option><option>Tanah</option><option>Lainnya</option>
+    </select>
+
+    <label for="jenis_dinding">Jenis Dinding Terluas <span class="required">*</span></label>
+    <select id="jenis_dinding" name="jenis_dinding" required>
+      <option value="">-- Pilih --</option>
+      <option>Tembok</option><option>Plesteran anyaman bambu/kawat</option>
+      <option>Kayu/papan/gypsum/GRC/calciboard</option><option>Anyaman bambu</option>
+      <option>Batang kayu</option><option>Bambu</option><option>Lainnya</option>
+    </select>
+
+    <label for="jenis_atap">Jenis Atap Terluas <span class="required">*</span></label>
+    <select id="jenis_atap" name="jenis_atap" required>
+      <option value="">-- Pilih --</option>
+      <option>Beton</option><option>Genteng</option><option>Seng</option><option>Asbes</option>
+      <option>Bambu</option><option>Kayu/sirap</option><option>Jerami/ijuk/daun-daunan/rumbia</option><option>Lainnya</option>
+    </select>
+
+    <!-- 3. SANITASI -->
+    <h2>3. Fasilitas Sanitasi & BAB</h2>
+    <label for="kepemilikan_bab">Kepemilikan Fasilitas BAB <span class="required">*</span></label>
+    <select id="kepemilikan_bab" name="kepemilikan_bab" required>
+      <option value="">-- Pilih --</option>
+      <option>Ada, digunakan hanya Anggota Keluarga sendiri</option>
+      <option>Ada, digunakan bersama Anggota Keluarga dari Keluarga tertentu</option>
+      <option>Ada, di MCK komunal</option><option>Ada, di MCK umum/siapapun menggunakan</option>
+      <option>Ada, Anggota Keluarga tidak menggunakan</option><option>Tidak ada fasilitas</option>
+    </select>
+
+    <label for="jenis_kloset">Jenis Kloset <span class="required">*</span></label>
+    <select id="jenis_kloset" name="jenis_kloset" required>
+      <option value="">-- Pilih --</option>
+      <option>Leher angsa</option><option>Plengsengan dengan tutup</option>
+      <option>Plengsengan tanpa tutup</option><option>Cemplung/cubluk</option>
+    </select>
+
+    <label for="pembuangan_tinja">Tempat pembuangan akhir tinja <span class="required">*</span></label>
+    <select id="pembuangan_tinja" name="pembuangan_tinja" required>
+      <option value="">-- Pilih --</option>
+      <option>Tangki septik</option><option>IPAL</option>
+      <option>Kolam/sawah/sungai/danau/laut</option><option>Lubang tanah</option>
+      <option>Pantai/tanah lapang/kebun</option><option>Lainnya</option>
+    </select>
+
+    <!-- 4. BAHAN BAKAR & AIR -->
+    <h2>4. Bahan Bakar & Sumber Air</h2>
+    <label for="bahan_bakar">Bahan Bakar Utama Memasak <span class="required">*</span></label>
+    <select id="bahan_bakar" name="bahan_bakar" required>
+      <option value="">-- Pilih --</option>
+      <option>Tidak memasak di rumah</option><option>Listrik</option>
+      <option>Gas elpiji 5,5kg/blue gaz</option><option>Gas elpiji 12 kg</option>
+      <option>Gas elpiji 3 kg</option><option>Gas kota/meteran PGN</option>
+      <option>Biogas</option><option>Minyak tanah</option><option>Briket</option>
+      <option>Arang</option><option>Kayu bakar</option><option>Lainnya</option>
+    </select>
+
+    <label for="sumber_air">Sumber Air Minum <span class="required">*</span></label>
+    <select id="sumber_air" name="sumber_air" required>
+      <option value="">-- Pilih --</option>
+      <option>Air kemasan bermerk</option><option>Air isi ulang</option><option>Leding</option>
+      <option>Sumur bor/pompa</option><option>Sumur terlindung</option><option>Sumur tak terlindung</option>
+      <option>Mata air terlindung</option><option>Mata air tak terlindung</option>
+      <option>Air permukaan (sungai/danau/waduk/kolam/irigasi)</option>
+      <option>Air hujan</option><option>Lainnya</option>
+    </select>
+
+    <label for="jarak_air">Jarak sumber air minum ke penampungan limbah/tinja terdekat <span class="required">*</span></label>
+    <select id="jarak_air" name="jarak_air" required>
+      <option value="">-- Pilih --</option>
+      <option>&lt; 10 meter</option><option>&ge; 10 meter</option><option>Tidak tahu</option>
+    </select>
+
+    <label for="penerangan">Sumber Penerangan Utama <span class="required">*</span></label>
+    <select id="penerangan" name="penerangan" required>
+      <option value="">-- Pilih --</option>
+      <option>Listrik PLN dengan meteran</option><option>Listrik PLN tanpa meteran</option>
+      <option>Listrik non-PLN</option><option>Bukan listrik</option>
+    </select>
+
+    <!-- 5. DAYA LISTRIK -->
+    <h2>5. Daya Listrik</h2>
+    <label for="no_pelanggan">Nomor Pelanggan (Opsional)</label>
+    <input id="no_pelanggan" name="no_pelanggan" type="text">
+    <label for="no_meter">Nomor Meter (Opsional)</label>
+    <input id="no_meter" name="no_meter" type="text">
+    <label for="besar_daya">Besar Daya (VA) <span class="required">*</span></label>
+    <input id="besar_daya" name="besar_daya" type="number" min="0" required>
+
+    <!-- 6. ASET BERGERAK -->
+    <h2>6. Jumlah Aset Bergerak (isi 0 bila tidak punya)</h2>
+    <div class="grid-3">
+      <div><label>Tabung gas 5,5 kg atau lebih *</label><input name="aset_tabung_gas" type="number" min="0" value="0" required></div>
+      <div><label>Lemari es/kulkas *</label><input name="aset_kulkas" type="number" min="0" value="0" required></div>
+      <div><label>AC *</label><input name="aset_ac" type="number" min="0" value="0" required></div>
+      <div><label>Pemanas Air *</label><input name="aset_waterheater" type="number" min="0" value="0" required></div>
+      <div><label>Telepon rumah *</label><input name="aset_pstn" type="number" min="0" value="0" required></div>
+      <div><label>TV ≥30 inci *</label><input name="aset_tv" type="number" min="0" value="0" required></div>
+      <div><label>Emas ≥10 gram (gram) *</label><input name="aset_emas" type="number" min="0" value="0" required></div>
+      <div><label>Komputer/Laptop *</label><input name="aset_komputer" type="number" min="0" value="0" required></div>
+      <div><label>Sepeda Motor *</label><input name="aset_motor" type="number" min="0" value="0" required></div>
+      <div><label>Sepeda *</label><input name="aset_sepeda" type="number" min="0" value="0" required></div>
+      <div><label>Mobil *</label><input name="aset_mobil" type="number" min="0" value="0" required></div>
+      <div><label>Perahu *</label><input name="aset_perahu" type="number" min="0" value="0" required></div>
+      <div><label>Perahu Motor *</label><input name="aset_kapal_motor" type="number" min="0" value="0" required></div>
+      <div><label>Smartphone *</label><input name="aset_smartphone" type="number" min="0" value="0" required></div>
+    </div>
+
+    <!-- 7. ASET TIDAK BERGERAK -->
+    <h2>7. Aset Tidak Bergerak</h2>
+    <label>Luas Sawah/Kebun milik sendiri (m²) *</label>
+    <input name="luas_sawah" type="number" min="0" value="0" required>
+    <label>Memiliki Lahan lain (m²) *</label>
+    <input name="memiliki_lahan" type="number" min="0" value="0" required>
+    <label>Rumah/bangunan di tempat lain (unit) *</label>
+    <input name="rumah_lain" type="number" min="0" value="0" required>
+
+    <!-- 8. TERNAK -->
+    <h2>8. Jumlah Ternak</h2>
+    <div class="grid-3">
+      <div><label>Sapi *</label><input name="jml_sapi" type="number" min="0" value="0" required></div>
+      <div><label>Kerbau *</label><input name="jml_kerbau" type="number" min="0" value="0" required></div>
+      <div><label>Kuda *</label><input name="jml_kuda" type="number" min="0" value="0" required></div>
+      <div><label>Kambing/Domba *</label><input name="jml_kambing" type="number" min="0" value="0" required></div>
+      <div><label>Babi *</label><input name="jml_babi" type="number" min="0" value="0" required></div>
+    </div>
+
+    <!-- 9. UPLOAD FOTO -->
+    <h2>9. Upload Foto (Wajib)</h2>
+    <label>Foto KTP/KK <span class="required">*</span></label>
+    <input id="foto_ktpkk" name="foto_ktpkk" type="file" accept="image/*" required>
+
+    <label>Foto Rumah Tampak Depan <span class="required">*</span></label>
+    <input id="foto_rumah_depan" name="foto_rumah_depan" type="file" accept="image/*" required>
+
+    <label>Foto Rumah Tampak Dalam <span class="required">*</span></label>
+    <input id="foto_rumah_dalam" name="foto_rumah_dalam" type="file" accept="image/*" required>
+
+    <!-- 10. LOKASI + SCREENSHOT MAPS -->
+    <h2>10. Lokasi Rumah</h2>
+    <label>Alamat Lengkap <span class="required">*</span></label>
+    <input id="alamat_lengkap" name="alamat_lengkap" type="text" required>
+
+    <div class="row">
+      <div class="col"><label>Latitude <span class="required">*</span></label>
+        <input id="latitude" name="latitude" type="text" required placeholder="-6.198937876135584"></div>
+      <div class="col"><label>Longitude <span class="required">*</span></label>
+        <input id="longitude" name="longitude" type="text" required placeholder="106.85253277661421"></div>
+      <div class="col"><button type="button" onclick="getLocation()" style="padding:10px;height:48px;">Ambil Lokasi Sekarang</button></div>
+    </div>
+    <p class="small">Atau salin dari Google Maps (format desimal).</p>
+
+    <label>Screenshot Google Maps (tunjukkan pin lokasi rumah) <span class="required">*</span></label>
+    <input id="screenshot_maps" name="screenshot_maps" type="file" accept="image/*" required>
+    <div id="previewAll" class="preview-row"></div>
+
+    <!-- 11. PERSETUJUAN -->
+    <h2>11. Pernyataan Kebenaran Data</h2>
+    <div class="checkbox-group">
+      <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-weight:500;">
+        <input type="checkbox" id="persetujuan" name="persetujuan" required style="margin-top:3px;">
+        <span>Saya menyatakan dengan sesungguhnya bahwa seluruh data yang saya isikan benar, sesuai kondisi sebenarnya, dan dapat dipertanggungjawabkan secara hukum. Apabila terdapat data tidak benar, saya bersedia dikenakan sanksi sesuai peraturan yang berlaku.</span>
+      </label>
+    </div>
+
+    <button type="submit" class="btn">Kirim Data Pendataan</button>
+  </form>
+</div>
+
+<script>
+// Init RT/RW
+for(let i=1;i<=20;i++){
+  const o=document.createElement('option'); o.value=i; o.text=i;
+  document.getElementById('rt').appendChild(o.cloneNode(true));
+  if(i<=10) document.getElementById('rw').appendChild(o.cloneNode(true));
+}
+
+// Ambil lokasi GPS
+function getLocation(){
+  if(!navigator.geolocation){alert('Browser tidak mendukung geolocation');return;}
+  navigator.geolocation.getCurrentPosition(pos=>{
+    document.getElementById('latitude').value = pos.coords.latitude.toFixed(10);
+    document.getElementById('longitude').value = pos.coords.longitude.toFixed(10);
+    alert('Lokasi berhasil diambil!');
+  },err=>{alert('Gagal: '+err.message+'\nPastikan GPS aktif & izinkan akses lokasi.');});
+}
+
+// Preview semua foto
+function updatePreview(){
+  const div = document.getElementById('previewAll');
+  div.innerHTML='';
+  ['foto_ktpkk','foto_rumah_depan','foto_rumah_dalam','screenshot_maps'].forEach(id=>{
+    const input = document.getElementById(id);
+    if(input && input.files[0]){
+      const img=document.createElement('img');
+      img.src=URL.createObjectURL(input.files[0]);
+      img.alt=id; div.appendChild(img);
+    }
+  });
+}
+['foto_ktpkk','foto_rumah_depan','foto_rumah_dalam','screenshot_maps'].forEach(id=>
+  document.getElementById(id).addEventListener('change',updatePreview));
+
+// Submit & Validasi
+document.getElementById('mainForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  this.querySelectorAll('.error').forEach(el=>el.classList.remove('error'));
+
+  let ok=true;
+  this.querySelectorAll('[required]').forEach(el=>{
+    if(el.type==='checkbox' && !el.checked){el.closest('.checkbox-group').style.borderColor='#d32f2f';ok=false;}
+    if(el.type==='file' && (!el.files || el.files.length===0)){el.classList.add('error');ok=false;}
+    if((el.type==='text'||el.type==='number'||el.tagName==='SELECT') && !el.value.trim()){el.classList.add('error');ok=false;}
+  });
+
+  // Koordinat
+  const lat=document.getElementById('latitude').value.trim();
+  const lon=document.getElementById('longitude').value.trim();
+  if(!/^[-+]?\d+\.\d+$/.test(lat) || Number(lat)<-90 || Number(lat)>90){document.getElementById('latitude').classList.add('error');ok=false;}
+  if(!/^[-+]?\d+\.\d+$/.test(lon) || Number(lon)<-180 || Number(lon)>180){document.getElementById('longitude').classList.add('error');ok=false;}
+
+  if(!ok){alert('Mohon lengkapi semua field wajib (bertanda merah) dan centang pernyataan.');return;}
+  if(!confirm('Yakin semua data sudah benar?')) return;
+
+  alert('Validasi sukses! Data siap dikirim.\nCek console untuk preview.');
+  const fd=new FormData(this);
+  const summary={};
+  fd.forEach((v,k)=>summary[k]=v instanceof File ? v.name : v);
+  console.log('DATA SIAP KIRIM →',summary);
+});
+</script>
+</body>
+</html>
